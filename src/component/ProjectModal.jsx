@@ -18,19 +18,34 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 50, opacity: 0 }}
             transition={{ type: "spring", damping: 15 }}
-            className="bg-gray-800 rounded-lg p-8 max-w-2xl w-full mx-4 relative"
+            className="bg-gray-800 rounded-lg p-2 sm:p-8 max-w-2xl md:max-w-6xl w-full mx-4 overflow-y-auto max-h-[75vh] custom-scrollbar"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
-            >
-              <X size={24} />
-            </button>
+            <div className='flex justify-between'>
             <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-purple-600 text-transparent bg-clip-text">
               {project.title}
             </h2>
-            <img src={project.image} alt={project.title} className="w-full h-48 object-cover rounded-lg mb-4" />
+            <button
+              onClick={onClose}
+              className=" text-gray-400 mb-4 hover:text-white transition-colors"
+            >
+              <X size={24} />
+            </button>
+            </div>
+            <div className='flex flex-col md:flex-row space-x-0 md:space-x-6 space-y-2 md:space-y-0'>
+            <div className='flex flex-col md:w-8/12'>
+            <img src={project.image} alt={project.title} className="w-full h-40 sm:h-72 md:h-96 object-fit rounded-lg mb-4" />
+            <h3 className="text-xl font-semibold mb-2 text-pink-400">Technologies Used:</h3>
+            <div className="flex flex-wrap gap-2">
+              {project.technologies.map((tech, index) => (
+                <div key={index} className="flex items-center bg-gray-700 rounded-full px-3 py-1">
+                  {tech.icon}
+                  <span className="ml-2 text-sm">{tech.name}</span>
+                </div>
+              ))}
+            </div>
+            </div>
+            <div className='flex flex-col md:w-4/12'>
             <p className="text-gray-300 mb-4">{project.description}</p>
             <div className="flex space-x-4 mb-4">
               <a
@@ -50,14 +65,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 Live Demo
               </a>
             </div>
-            <h3 className="text-xl font-semibold mb-2 text-pink-400">Technologies Used:</h3>
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech, index) => (
-                <div key={index} className="flex items-center bg-gray-700 rounded-full px-3 py-1">
-                  {tech.icon}
-                  <span className="ml-2 text-sm">{tech.name}</span>
-                </div>
-              ))}
+            </div>
             </div>
           </motion.div>
         </motion.div>

@@ -1,7 +1,15 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { motion, stagger, useAnimate } from 'framer-motion';
 
 const Contact = () => {
+  const yourName = useRef();
+  const yourEmail = useRef();
+  const yourPhoneNumber = useRef();
+  const yourMessage = useRef();
+
+  const [scope, animate] = useAnimate();
+  const [error, setError] = useState({});
+
   const containerVariants = {
     hidden: { opacity: 1 },
     visible: {
@@ -24,10 +32,45 @@ const Contact = () => {
     }
   };
 
+  const contactFormSubmitHandler = (event) => {
+    event.preventDefault();
+    console.log("submit");
+    const name = yourName.current.value;
+    const email = yourEmail.current.value;
+    const phoneNumber = yourPhoneNumber.current.value;
+    const message = yourMessage.current.value;
+
+    if(!name.trim() || !email.trim() || !phoneNumber.trim() || !message.trim()) {
+      const newErrors = {
+        name: !name.trim() && "Name is required.",
+        email: (!email.trim() && "Email is required.") || (!email.includes("@") && "Email should contain @"),
+        phoneNumber: (!phoneNumber && "Phone number is required.") ||
+        (phoneNumber.length !== 10 && "Phone number must be exactly 10 digits."),
+        message: !message.trim() && "Message is required."
+      };
+      setError(newErrors);
+      animate (
+        [
+          newErrors.name && ".inputName",
+          newErrors.email && ".inputEmail",
+          newErrors.phoneNumber && ".inputPhoneNumber",
+          newErrors.message && ".inputMessage",
+        ]
+          .filter(Boolean) // Removes false/undefined/null from the array
+          .join(", "), // Combines valid selectors into a single string
+        { x: [-10, 0, 10 , 0]},
+        { type: 'spring', stiffness: 400, duration: 0.5, delay: stagger(0.05)}
+      )
+      return
+    }
+
+    setError({});
+  }
+
   return (
     <motion.section
       id="contact"
-      className="py-20 bg-gradient-to-b from-cyan-950 via-gray-950 to-black"
+      className="pt-20 bg-gradient-to-b from-cyan-950 via-gray-950 to-black"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.3 }}
@@ -35,44 +78,71 @@ const Contact = () => {
     >
       <div className="container mx-auto px-6">
         <motion.h2
-          className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-purple-600 text-transparent bg-clip-text"
+          className="text-4xl border-b pb-3 font-bold mb-8 text-center bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text"
           variants={itemVariants}
         >
           Contact Me
         </motion.h2>
         <motion.form
           className="max-w-md mx-auto space-y-6"
+          ref={scope}
           variants={containerVariants}
+          onSubmit={contactFormSubmitHandler}
         >
+          <motion.div variants={itemVariants}>
           <motion.input
             type="text"
             placeholder="Your Name"
-            required
-            className="w-full px-4 py-2 bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-purple-600"
-            variants={itemVariants}
-            whileFocus={{ scale: 1.05 }}
+            onFocus={() => {setError({...error, name: ''})}}
+            ref={yourName}
+            className={`inputName w-full px-4 py-2 bg-gradient-to-b from-gray-950/90 to-cyan-800 rounded border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 ${error.name && `placeholder:text-red-500 border-red-500`}`}
+            whileFocus={{ scale: 1.1 }}
+            transition={{duration:0.5}}
           />
+          {error.name && <span className="text-red-500 text-sm mt-1">{error.name}</span>}
+          </motion.div>
+          <motion.div variants={itemVariants}>
           <motion.input
             type="email"
             placeholder="Your Email"
-            required
-            className="w-full px-4 py-2 bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-purple-600"
-            variants={itemVariants}
-            whileFocus={{ scale: 1.05 }}
+            onFocus={() => {setError({...error, email: ''})}}
+            ref={yourEmail}
+            className={`inputEmail w-full px-4 py-2 bg-gradient-to-b from-gray-950/90 to-cyan-800 rounded border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 ${error.email && `placeholder:text-red-500 border-red-500`}`}
+            whileFocus={{ scale: 1.1 }}
+            transition={{duration:0.5}}
           />
+          {error.email && <span className="text-red-500 text-sm mt-1">{error.email}</span>}
+          </motion.div>
+          <motion.div variants={itemVariants}>
+           <motion.input
+            type="number"
+            placeholder="Your Phone Number"
+            onFocus={() => {setError({...error, phoneNumber: ''})}}
+            ref={yourPhoneNumber}
+            className={`inputPhoneNumber w-full px-4 py-2 bg-gradient-to-b from-gray-950/90 to-cyan-800 rounded border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 ${error.phoneNumber && `placeholder:text-red-500 border-red-500`}`}
+            whileFocus={{ scale: 1.1 }}
+            transition={{duration:0.5}}
+          />
+          {error.phoneNumber && <span className="text-red-500 text-sm mt-1">{error.phoneNumber}</span>}
+          </motion.div>
+          <motion.div variants={itemVariants}>
           <motion.textarea
             placeholder="Your Message"
-            required
-            className="w-full px-4 py-2 bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-purple-600 h-32"
-            variants={itemVariants}
-            whileFocus={{ scale: 1.05 }}
+            ref={yourMessage}
+            onFocus={() => {setError({...error, message: ''})}}
+            className={`inputMessage w-full px-4 py-2 bg-gradient-to-b from-gray-950/90 to-cyan-800 rounded border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 h-32 ${error.message && `placeholder:text-red-500 border-red-500`}`}
+            whileFocus={{ scale: 1.1 }}
+            transition={{duration:0.5}}
           />
+          {error.message && <span className="text-red-500 text-sm mt-1">{error.message}</span>}
+          </motion.div>
           <motion.button
             type="submit"
             className="w-full bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition-colors"
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            transition={{type: 'spring', stiffness: 200}}
           >
             Send Message
           </motion.button>
