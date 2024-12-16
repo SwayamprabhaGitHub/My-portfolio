@@ -147,13 +147,21 @@ const Projects = () => {
                   <img src={project.image} alt={project.title} className="w-full h-48 md:h-56 object-fit" />
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-2 text-pink-400">{project.title}</h3>
-                    <p className="text-gray-300 mb-4 line-clamp-2">{project.description}</p>
+                    <p className="text-gray-300 mb-5 line-clamp-3">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-5">
+              {project.technologies.map((tech, index) => (
+                <div key={index} className="flex items-center bg-gray-800 rounded-full px-3 py-1">
+                  {tech.icon}
+                  <span className="ml-2 text-sm">{tech.name}</span>
+                </div>
+              ))}
+            </div>
                     <motion.button
                       onClick={() => setSelectedProject(project)}
                       className="inline-block bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition-colors"
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.10 }}
                       whileTap={{ scale: 0.95 }}
-                      transition={{type: 'spring', stiffness: 200}}
+                      transition={{type: 'spring', stiffness: 500}}
                     >
                       View Project
                     </motion.button>

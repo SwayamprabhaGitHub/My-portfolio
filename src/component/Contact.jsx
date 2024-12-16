@@ -32,8 +32,9 @@ const Contact = () => {
     }
   };
 
-  const contactFormSubmitHandler = (event) => {
+  const contactFormSubmitHandler = async(event) => {
     event.preventDefault();
+
     console.log("submit");
     const name = yourName.current.value;
     const email = yourEmail.current.value;
@@ -64,8 +65,32 @@ const Contact = () => {
       return
     }
 
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "2a9395fb-4e1a-42c2-a9ca-5563704aa861");
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: json
+    }).then((res) => res.json());
+
+    if (res.success) {
+      console.log("Success", res);
+    }
     setError({});
   }
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    
+  };
 
   return (
     <motion.section
@@ -95,6 +120,7 @@ const Contact = () => {
             placeholder="Your Name"
             onFocus={() => {setError({...error, name: ''})}}
             ref={yourName}
+            name='name'
             className={`inputName w-full px-4 py-2 bg-gradient-to-b from-gray-950/90 to-cyan-800 rounded border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 ${error.name && `placeholder:text-red-500 border-red-500`}`}
             whileFocus={{ scale: 1.1 }}
             transition={{duration:0.5}}
@@ -107,6 +133,7 @@ const Contact = () => {
             placeholder="Your Email"
             onFocus={() => {setError({...error, email: ''})}}
             ref={yourEmail}
+            name='email'
             className={`inputEmail w-full px-4 py-2 bg-gradient-to-b from-gray-950/90 to-cyan-800 rounded border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 ${error.email && `placeholder:text-red-500 border-red-500`}`}
             whileFocus={{ scale: 1.1 }}
             transition={{duration:0.5}}
@@ -119,6 +146,7 @@ const Contact = () => {
             placeholder="Your Phone Number"
             onFocus={() => {setError({...error, phoneNumber: ''})}}
             ref={yourPhoneNumber}
+            name='number'
             className={`inputPhoneNumber w-full px-4 py-2 bg-gradient-to-b from-gray-950/90 to-cyan-800 rounded border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 ${error.phoneNumber && `placeholder:text-red-500 border-red-500`}`}
             whileFocus={{ scale: 1.1 }}
             transition={{duration:0.5}}
@@ -129,6 +157,7 @@ const Contact = () => {
           <motion.textarea
             placeholder="Your Message"
             ref={yourMessage}
+            name='message'
             onFocus={() => {setError({...error, message: ''})}}
             className={`inputMessage w-full px-4 py-2 bg-gradient-to-b from-gray-950/90 to-cyan-800 rounded border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 h-32 ${error.message && `placeholder:text-red-500 border-red-500`}`}
             whileFocus={{ scale: 1.1 }}
