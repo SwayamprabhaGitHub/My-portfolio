@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, stagger, useAnimate } from 'framer-motion';
+import { toast } from 'react-toastify';
 
 const Contact = () => {
   const yourName = useRef();
@@ -9,6 +10,7 @@ const Contact = () => {
 
   const [scope, animate] = useAnimate();
   const [error, setError] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 1 },
@@ -64,7 +66,8 @@ const Contact = () => {
       )
       return
     }
-
+    setIsLoading(true);
+    const loadingToast = toast.loading("Sending Message...");
     const formData = new FormData(event.target);
 
     formData.append("access_key", "2a9395fb-4e1a-42c2-a9ca-5563704aa861");
@@ -83,14 +86,21 @@ const Contact = () => {
 
     if (res.success) {
       console.log("Success", res);
+      // Update the loading toast with success message
+      toast.update(loadingToast, {
+        render: `Message sent successfully!`,
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
     }
     setError({});
+    setIsLoading(false);
+    yourName.current.value = "";
+    yourEmail.current.value = "";
+    yourPhoneNumber.current.value = "";
+    yourMessage.current.value = "";
   }
-
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    
-  };
 
   return (
     <motion.section
@@ -167,7 +177,8 @@ const Contact = () => {
           </motion.div>
           <motion.button
             type="submit"
-            className="w-full bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition-colors"
+            disabled={isLoading}
+            className="w-full bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition-colors disabled:bg-purple-400 disabled:cursor-not-allowed"
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
