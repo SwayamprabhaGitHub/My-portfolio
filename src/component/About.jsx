@@ -1,4 +1,5 @@
 import React from 'react';
+import laptopgirl from '../assets/laptopgirl.png';
 import { motion } from 'framer-motion';
 
 const About = () => {
@@ -57,9 +58,9 @@ const About = () => {
               >
               {/* <div className="absolute inset-0 rounded-2xl  flex items-center justify-center"> */}
                 <img
-                    src="https://gyandors.com/_next/image?url=%2Fimages%2Fdeveloper-1.png&w=1080&q=75" // Replace with your image URL
+                    src={laptopgirl}// Replace with your image URL
                     alt="Descriptive text for the image" // Add alt text for accessibility
-                    className="w-full h-full object-cover rounded-2xl drop-shadow-[0px_0px_8px_rgba(192,38,211,1)]" // Style the image
+                    className="w-full h-full object-fit rounded-2xl drop-shadow-[0px_0px_8px_rgba(192,38,211,1)]" // Style the image
                   />
               {/* </div> */}
               </motion.div>
