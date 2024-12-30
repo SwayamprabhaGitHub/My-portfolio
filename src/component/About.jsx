@@ -34,11 +34,11 @@ const About = () => {
       viewport={{ once: false, amount: 0.07 }}
       variants={containerVariants}
     >
-      <div className="container mx-auto px-6">
+      <div className=" mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <motion.div className="md:w-1/2" variants={itemVariants}>
             <motion.div
-              className="relative w-[22rem] h-[22rem] sm:w-[26rem] sm:h-[26rem] md:w-[28rem] md:h-[28rem] mx-auto md:mx-0"
+              className="relative w-[22rem] h-[22rem] sm:w-[26rem] sm:h-[26rem] md:w-[22rem] md:h-[22rem] lg:w-[28rem] lg:h-[28rem] mx-auto md:mx-0"
               initial={{ rotate: -5 }}
               whileHover={{ rotate: 0 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -56,13 +56,13 @@ const About = () => {
                   repeatType: "reverse"
                 }}
               >
-              {/* <div className="absolute inset-0 rounded-2xl  flex items-center justify-center"> */}
+                {/* <div className="absolute inset-0 rounded-2xl  flex items-center justify-center"> */}
                 <img
-                    src={laptopgirl}// Replace with your image URL
-                    alt="Descriptive text for the image" // Add alt text for accessibility
-                    className="w-full h-full object-fit rounded-2xl drop-shadow-[0px_0px_8px_rgba(192,38,211,1)]" // Style the image
-                  />
-              {/* </div> */}
+                  src={laptopgirl}// Replace with your image URL
+                  alt="Descriptive text for the image" // Add alt text for accessibility
+                  className="w-full h-full object-fit rounded-2xl drop-shadow-[0px_0px_8px_rgba(192,38,211,1)]" // Style the image
+                />
+                {/* </div> */}
               </motion.div>
             </motion.div>
           </motion.div>
@@ -75,12 +75,12 @@ const About = () => {
               About Me
             </motion.h2>
             <motion.p className="text-gray-300" variants={itemVariants}>
-              Hello! I'm [Your Name], a passionate web developer with a keen eye for design and a love for creating
-              seamless user experiences. With a background in [Your Background], I bring a unique perspective to every project I work on.
+              Hello! I'm Swayamprabha Priyadarsini, a passionate web developer with a keen eye for design and a love for creating 
+              seamless user experiences. Proficient in HTML, CSS, JavaScript and React, I am dedicated to building responsive, accessible, and visually appealing websites that perform seamlessly across devices.
             </motion.p>
             <motion.p className="text-gray-300" variants={itemVariants}>
-              When I'm not coding, you can find me [Your Hobbies/Interests]. I believe in continuous learning and am always
-              excited to take on new challenges in the ever-evolving world of web development.
+            I believe in continuous learning and am always excited to take on new challenges in the ever-evolving world of web development, 
+            and I’m eager to collaborate and contribute to innovative, impactful projects.
             </motion.p>
             <motion.div variants={itemVariants}>
               <motion.a

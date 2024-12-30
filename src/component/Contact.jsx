@@ -111,7 +111,7 @@ const Contact = () => {
       viewport={{ once: false, amount: 0.3 }}
       variants={containerVariants}
     >
-      <div className="container mx-auto px-6">
+      <div className=" mx-auto px-6">
         <motion.h2
           className="text-4xl border-b pb-3 font-bold mb-8 text-center bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text"
           variants={itemVariants}

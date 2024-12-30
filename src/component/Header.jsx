@@ -48,9 +48,9 @@ const Header = ({ activeTab, setActiveTab }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-600"
+              className="text-lg md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-600"
             >
-              Your Name
+              Swayamprabha Priyadarsini
             </motion.h1>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

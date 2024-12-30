@@ -6,8 +6,9 @@ import reduxImg from '../assets/reduxImg.svg';
 import htmlImg from '../assets/htmlImg.svg';
 import cssImg from '../assets/cssImg.svg';
 import tailwindImg from '../assets/tailwindImg.svg';
-import routerImg from '../assets/routerImg.svg';
+import routerImg from '../assets/router.webp';
 import gitImg from '../assets/gitImg.svg';
+import githubImg from '../assets/github.webp';
 import dsaImg from "../assets/dsa.png"
 
 const Skills = () => {
@@ -50,7 +51,7 @@ const Skills = () => {
     },
     {
       name: "GitHub",
-      icon: "https://gyandors.com/_next/image?url=%2Fimages%2Fgithub.png&w=64&q=75"
+      icon: githubImg,
     },
     {
       name: "Firebase",
@@ -68,10 +69,10 @@ const Skills = () => {
       name: "DSA",
       icon: dsaImg
     },
-    {
-      name: "Java",
-      icon: "https://www.svgrepo.com/show/184143/java.svg"
-    }
+    // {
+    //   name: "Java",
+    //   icon: "https://www.svgrepo.com/show/184143/java.svg"
+    // }
   ];
 
   const containerVariants = {
@@ -119,7 +120,7 @@ const Skills = () => {
       viewport={{ once: false, amount: 0.07 }}
       variants={containerVariants}
     >
-      <div className="container mx-auto px-6">
+      <div className="mx-auto px-6">
         <motion.h2
           className="text-4xl  border-b pb-3 font-bold mb-8 text-center bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text"
           variants={itemVariants}

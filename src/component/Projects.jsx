@@ -128,7 +128,7 @@ const Projects = () => {
       viewport={{ once: false, amount: 0.1 }}
       variants={containerVariants}
     >
-      <div className="container mx-auto px-6">
+      <div className="mx-auto px-6">
         <motion.h2
           className="text-4xl font-bold mb-8 border-b pb-3 text-center bg-gradient-to-r from-pink-400 to-purple-600 text-transparent bg-clip-text"
           variants={itemVariants}
