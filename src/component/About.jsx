@@ -84,7 +84,7 @@ const About = () => {
             </motion.p>
             <motion.div variants={itemVariants}>
               <motion.a
-                href="https://drive.google.com/your-resume-link"
+                href="https://drive.google.com/file/d/1ajwBlMnpktuBlhBS_t8Afsa5GGCYRI3a/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-medium"

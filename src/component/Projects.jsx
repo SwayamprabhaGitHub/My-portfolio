@@ -5,7 +5,16 @@ import ProjectModal from './ProjectModal';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import reactImg from '../assets/reactImg.svg';
+import reduxImg from '../assets/reduxImg.svg';
+import tailwindImg from '../assets/tailwindImg.svg';
 import MailHubImg from '../assets/MailHub.png';
+import SpendWiseImg from '../assets/SpendWiseImg.png';
+import RestaurantAppImg from '../assets/RestaurantAppImg.png';
+import TrendTroveImg from '../assets/TrendTroveImg.png';
+import htmlImg from '../assets/htmlImg.svg';
+import cssImg from '../assets/cssImg.svg';
+import javascriptImg from '../assets/javascriptImg.svg';
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -13,64 +22,56 @@ const Projects = () => {
   const projects = [
     {
       title: "MailHub",
-      description: 'Built MailHub, an email management system with Firebase authentication (Google and email/password) and password recovery. Integrated Firestore for user-specific data storage and dynamic retrieval based on login state.•	Developed core features like email composition, categorized views (inbox, trash, starred, etc.), and search functionality. Implemented advanced email management, including batch actions, "Delete for everyone," and read/unread indicators. Enhanced user experience with persistent login, profile management, and paginated email navigation. Developed MailHub using React, Tailwind CSS, Firebase and Redux for global state management, focusing on scalability and core functionality.',
+      description: "Developed an email management system featuring Firebase authentication with support for Google sign-in, email/password login, and password recovery, ensuring secure access for users. The system utilized Firestore for user-specific data storage and dynamic data retrieval, with login states persisting across page refreshes for an enhanced user experience. Key functionalities included a mail composition module for creating, sending, and managing emails, and categorized views for inbox, sent, starred, trash, and all mails. Integrated search functionality to streamline email retrieval and a profile management feature for users to update their details. Improved navigation with pagination and batch processing for actions like moving multiple emails to trash, and introduced a 'Delete for everyone' feature for email deletion on both sender and recipient ends, inspired by WhatsApp.",
       image: MailHubImg,
-      githubLink: "https://github.com/yourusername/project1",
-      websiteLink: "https://project1-demo.com",
+      githubLink: "https://github.com/SwayamprabhaGitHub/mailhub.git",
+      websiteLink: "https://mailhub-sigma.vercel.app/",
       technologies: [
-        { name: "React", icon: <Code className="w-4 h-4" /> },
-        { name: "Node.js", icon: <Code className="w-4 h-4" /> },
-        { name: "MongoDB", icon: <Code className="w-4 h-4" /> },
+        { name: "React", icon: <img src= {reactImg} className='w-4 h-4' /> },
+        { name: "Redux", icon: <img src= {reduxImg} className='w-4 h-4' /> },
+        { name: "Tailwind CSS", icon: <img src= {tailwindImg} className='w-4 h-4' /> },
+        { name: "Firebase", icon: <img src= "https://www.svgrepo.com/show/353735/firebase.svg" className='w-4 h-4' /> },
       ]
     },
     {
-      title: "Project 2",
-      description: "Project 2 is a mobile-first web application built with React Native and Firebase. It demonstrates my ability to create cross-platform mobile apps with a robust backend.",
-      image: "https://via.placeholder.com/300x200",
-      githubLink: "https://github.com/yourusername/project2",
-      websiteLink: "https://project2-demo.com",
+      title: "TrendTrove",
+      description: "Developed a feature-rich e-commerce website leveraging Firebase Authentication for secure user and admin login with persistent states and role-based protected routes. Integrated Firestore for dynamic data retrieval and storage, with dedicated user and admin dashboards to manage orders, products, and user details efficiently. Implemented advanced features like category-based product navigation, search with pagination, a responsive product page with an image slider, and Razorpay integration for secure payments. Enhanced user experience with a light/dark mode toggle, a mobile-friendly layout, and seamless cart and address management. Utilized Context API and Redux for scalable global state management across the platform.",
+      image: TrendTroveImg,
+      githubLink: "https://github.com/Code-with-S-G/trend_trove.git",
+      websiteLink: "https://trendztrove.netlify.app/",
       technologies: [
-        { name: "React Native", icon: <Code className="w-4 h-4" /> },
-        { name: "Firebase", icon: <Code className="w-4 h-4" /> },
-        { name: "Redux", icon: <Code className="w-4 h-4" /> },
+        { name: "React", icon: <img src= {reactImg} className='w-4 h-4' /> },
+        { name: "Redux", icon: <img src= {reduxImg} className='w-4 h-4' /> },
+        { name: "Tailwind CSS", icon: <img src= {tailwindImg} className='w-4 h-4' /> },
+        { name: "Firebase", icon: <img src= "https://www.svgrepo.com/show/353735/firebase.svg" className='w-4 h-4' /> },
       ]
     },
     {
-      title: "Project 3",
-      description: "Project 3 is a data visualization dashboard created with D3.js and Vue.js. It showcases my skills in frontend development and data representation.",
-      image: "https://via.placeholder.com/300x200",
-      githubLink: "https://github.com/yourusername/project3",
-      websiteLink: "https://project3-demo.com",
+      title: "SpendWise",
+      description: "Developed a responsive web application for tracking daily expenses, empowering users to monitor and manage their financial habits effectively. Integrated Firebase Authentication to ensure secure user sign-up, login, and password recovery. The application featured dynamic forms for adding, editing, and managing expenses, with an option to export data as CSV files for convenient record-keeping. A profile card was designed to allow seamless updates to personal details, complemented by interactive modals displaying success messages, errors, and alerts to enhance the user experience. Leveraged Redux Toolkit for centralized and scalable state management, ensuring smooth and efficient functionality throughout the application.",
+      image: SpendWiseImg,
+      githubLink: "https://github.com/SwayamprabhaGitHub/spendwise.git",
+      websiteLink: "https://spendwise-mu.vercel.app/",
       technologies: [
-        { name: "Vue.js", icon: <Code className="w-4 h-4" /> },
-        { name: "D3.js", icon: <Code className="w-4 h-4" /> },
-        { name: "TypeScript", icon: <Code className="w-4 h-4" /> },
+        { name: "React", icon: <img src= {reactImg} className='w-4 h-4' /> },
+        { name: "Redux", icon: <img src= {reduxImg} className='w-4 h-4' /> },
+        { name: "Tailwind CSS", icon: <img src= {tailwindImg} className='w-4 h-4' /> },
+        { name: "Firebase", icon: <img src= "https://www.svgrepo.com/show/353735/firebase.svg" className='w-4 h-4' /> },
       ]
     },
     {
-      title: "Project 4",
-      description: "Project 4 is an e-commerce platform built with Next.js and Stripe integration. It demonstrates my ability to create performant and scalable web applications with secure payment processing.",
-      image: "https://via.placeholder.com/300x200",
-      githubLink: "https://github.com/yourusername/project4",
-      websiteLink: "https://project4-demo.com",
+      title: "Restaurant-app",
+      description: "Utilized Context API for state management, ensuring efficient data flow and component communication. Designed a visually appealing UI with Vanilla CSS, focusing on user interface design principles. Implemented cart functionality, allowing users to add and remove items dynamically.",
+      image: RestaurantAppImg,
+      githubLink: "https://github.com/SwayamprabhaGitHub/restaurant-app.git",
+      websiteLink: "https://restaurant-app-one-peach.vercel.app/",
       technologies: [
-        { name: "Next.js", icon: <Code className="w-4 h-4" /> },
-        { name: "Stripe", icon: <Code className="w-4 h-4" /> },
-        { name: "PostgreSQL", icon: <Code className="w-4 h-4" /> },
+        { name: "HTML", icon: <img src= {htmlImg} className='w-4 h-4' /> },
+        { name: "Vanila CSS", icon: <img src= {cssImg} className='w-4 h-4' /> },
+        { name: "JavaScript", icon: <img src= {javascriptImg} className='w-4 h-4' /> },
+        { name: "React", icon: <img src= {reactImg} className='w-4 h-4' /> },
       ]
     },
-    {
-      title: "Project 5",
-      description: "Project 5 is a machine learning-powered chatbot using Python and TensorFlow. It showcases my skills in AI and natural language processing, providing intelligent responses to user queries.",
-      image: "https://via.placeholder.com/300x200",
-      githubLink: "https://github.com/yourusername/project5",
-      websiteLink: "https://project5-demo.com",
-      technologies: [
-        { name: "Python", icon: <Code className="w-4 h-4" /> },
-        { name: "TensorFlow", icon: <Code className="w-4 h-4" /> },
-        { name: "Flask", icon: <Code className="w-4 h-4" /> },
-      ]
-    }
   ];
 
   const containerVariants = {
@@ -122,7 +123,7 @@ const Projects = () => {
   return (
     <motion.section
       id="projects"
-      className="pt-20 bg-gradient-to-b from-black via-gray-950 to-cyan-950"
+      className="pt-20 bg-gradient-to-b from-black via-gray-950 to-cyan-950 overflow-hidden"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.1 }}
