@@ -82,6 +82,15 @@ const About = () => {
             I believe in continuous learning and am always excited to take on new challenges in the ever-evolving world of web development, 
             and I’m eager to collaborate and contribute to innovative, impactful projects.
             </motion.p>
+            <motion.p className="text-gray-300" variants={itemVariants}>
+              📞 +91-7790011844{" "}
+              <motion.span className="hidden lg:inline md:ml-3 md:text-gray-300" variants={itemVariants}>
+                ✉️ pswayamprabha@gmail.com
+              </motion.span>
+              <motion.p className="mt-1 text-gray-300 lg:hidden" variants={itemVariants}>
+                ✉️ pswayamprabha@gmail.com
+              </motion.p>
+            </motion.p>
             <motion.div variants={itemVariants}>
               <motion.a
                 href="https://drive.google.com/file/d/1ajwBlMnpktuBlhBS_t8Afsa5GGCYRI3a/view?usp=drive_link"
